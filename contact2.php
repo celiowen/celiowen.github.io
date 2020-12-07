@@ -1,45 +1,3 @@
-<?php
-echo '<pre>';
-print_r($_POST)
-echo '<pre>';
-
-$message_sent =false; //asumir siempre que el mensaje no se envia hasta que se cumpla lo siguiente
-
-if(isset($_POST ['email']) && $userEmail = $_POST ['email'] != ''){
-	
-	if(filter_var($_POST ['email'], FILTER_VALIDATE_EMAIL) ){
-
-		// submit de form
-	$userNombre = $_POST ['nombre'];
-	$userApellido = $_POST ['apellido'];
-	$userEmail = $_POST ['email'];
-	$userTelefono = $_POST ['telefono'];
-	$userMember = $_POST ['member'];
-	$messageSubject = $_POST ['consulta'];
-	$message = $_POST ['explicacion'];
-
-	$to = "celinaowenph@gmail.com"
-	$body = "";
-
-	$body .= "De: ".$userNombre.$userApellido "\r\n";
-	$body .= "Email: ".$userEmail "\r\n";
-	$body .= "Telefono: ".$userTelefono "\r\n";
-	$body .= "Miembro: ".$userMember "\r\n";
-	$body .= "Consulta: ".$message "\r\n";
-
-	mail($to,$messageSubject,$body);
-
-	$message_sent =true;
-
-	}
-	else{
-		$invalid_class_name = "form-invalid";
-	}
-}
-
-?>
-
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -54,18 +12,6 @@ if(isset($_POST ['email']) && $userEmail = $_POST ['email'] != ''){
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 	</head>
 <body>
-	<?php
-	if($message_sent):
-
-	?>
-
-	<h3>Gracias por contactarte, nos comunicaremos pronto!</h3>
-
-	<?php
-	else
-
-	?>
-
 	<header>
 	<nav class="botonera">
 			<ul>
@@ -120,7 +66,7 @@ if(isset($_POST ['email']) && $userEmail = $_POST ['email'] != ''){
 			</div>
 		</div>
 		<div class="form-outer">
-			        <form method="POST" action="contact2.php">
+			        <form method="POST" action="contact.php">
 			<div class="page slide-page active">
 			            <div class="title">Identificación:</div>
 					<div class="field">
